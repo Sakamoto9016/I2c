@@ -1,124 +1,314 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>I²c site!</title>
-        </head>
-        <body>
-            <style>
-                body {
-                    font-family: sans-serif;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                    margin-top: 95px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    background-attachment: fixed;
-                    background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
-                }
-                .nav_bar {
-                    height: 60px !important;
-                    width: 100%;
-                    background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
-                    border: 0px solid transparent;
-                    /* border-radius: 10px; */
-                    box-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    display: flex;
-                    padding: 10px;
-                    z-index: 1000;
-                }
-                .nav_bar_text{
-                    margin-top: 5px;
-                }
-                .nav_bar_text h3 {
-                    margin: 0;
-                    padding: 0;
-                    line-height: 1.2;
-                    color: #000;
-                }
-                .nav_bar_text h5 {
-                    margin: 0;
-                    padding: 0;
-                    line-height: 1.2;
-                    color: #333;
-                }
-                .end_bar {
-                    margin-top: 15px;
-                    padding: 15px;
-                    background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
-                    box-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
-                    text-align: center;
-                }
-                svg {
-                    width: 60px;
-                    height: 60px;
-                    cursor: pointer;
-                }
-                .content {
-                    flex: 1;
-                    margin-top: 5px;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                    margin-bottom: 5px;
-                    padding: 15px;
-                    background-color: #ffffff33;
-                    border-radius: 10px;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-                }
-                .button {
-                    margin-top: 5px;
-                    margin-left: 5px;
-                    margin-right: 5px;
-                    margin-bottom: 5px;
-                    padding: 15px;
-                    background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
-                    border-radius: 10px;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-                    text-align: center;
-                    cursor: pointer;
-                }
-                .button:active{
-                    background: linear-gradient(to bottom right, #83a6c2, #b5d7f3);
-                }
-            </style>
-            <div class="nav_bar">
-                <a href="https://sakamoto9016.github.io/I2cShowcase/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" shape-rendering="geometricPrecision" height="60" width="60">
-                        <g stroke="#000" stroke-miterlimit="10">
-                            <path d="M10 90V10h80v80z" fill="#fff" stroke-width="4"/>
-                            <path d="m42.869 33.16-.964 5.348h-1.108a5 5 0 0 1-.246-.39 8 8 0 0 1-.224-.421q-.12-.243-.229-.49a30 30 0 0 1-.699-1.735 21 21 0 0 1-.366-1.08q-.1-.326-.188-.654-.178-.675-.243-1.122l-.022-.18q1.493-.84 3.506-1.543l.132-.047a13.4 13.4 0 0 1 3.723-.703q.391-.02.782-.02.732 0 1.46.062.696.063 1.292.191.388.083.766.205 1.21.396 2.003 1.01.122.093.238.195c.415.362.753.804.994 1.3q.108.223.186.459c.193.585.304 1.194.33 1.81q.007.18.007.358a6.8 6.8 0 0 1-.41 2.299 9 9 0 0 1-.385.905c-.344.692-.752 1.35-1.22 1.965q-.469.62-.996 1.192a22 22 0 0 1-1.93 1.843q-.703.596-1.443 1.144a32 32 0 0 1-4.265 2.65v.29l1.494-.338h6.602l2.12-3.228h1.06q.096.669.167 1.504l.001.013q.072.84.14 1.68l.005.055a36 36 0 0 1 .096 1.687q.024.775.024 1.3v.025H38.725v-1.59a33 33 0 0 0 2.852-1.805q.57-.4 1.123-.821a28 28 0 0 0 3.614-3.253 21 21 0 0 0 1.625-1.967q.543-.748 1-1.55.879-1.546.995-2.946.018-.214.018-.427 0-1.323-.427-2.23a3.3 3.3 0 0 0-.392-.637q-.729-.922-2.718-1.024-.255-.013-.51-.012-.648-.004-1.286.101-.997.17-1.75.621Zm34.5 32.09.627.675a6.4 6.4 0 0 1-1.593 1.965q-.577.48-1.226.854a8.3 8.3 0 0 1-3.066 1.033q-.74.1-1.488.1-2.842 0-4.939-.892c-2.097-.892-2.562-1.446-3.493-2.554s-1.63-2.441-2.096-4a16.5 16.5 0 0 1-.597-3.077q-.104-1.048-.102-2.102 0-6.12 2.988-9.372c2.988-3.252 4.706-3.253 8.143-3.253q1.053-.001 2.102.09 1.129.103 2.114.32.769.168 1.517.409a11.4 11.4 0 0 1 1.64.675 30 30 0 0 1-.19 1.576 42 42 0 0 1-.34 1.99q-.135.698-.317 1.387-.18.673-.387 1.243-.12.327-.26.646h-1.302l-2.023-5.734a2.4 2.4 0 0 0-1.043-.416 6 6 0 0 0-.72-.058 14 14 0 0 0-.454-.007 7.2 7.2 0 0 0-2.205.321 5.66 5.66 0 0 0-2.854 2.064q-1.537 2.055-1.75 6.565a32 32 0 0 0-.033 1.506q0 1.83.506 3.565c.506 1.735.851 2.193 1.542 3.108s1.558 1.647 2.602 2.193c.71.366 1.475.61 2.265.721q.683.1 1.373.098.698.002 1.392-.092a7 7 0 0 0 1.547-.39q.578-.22 1.123-.512a7 7 0 0 0 .997-.644Zm-43.03 2.65v1.398H22.004v-1.397a14 14 0 0 1 3.855-1.157V38.171q-.964-.194-1.927-.506c-.963-.312-1.285-.442-1.928-.699v-1.397H34.34v1.397q-.62.274-1.261.496-.308.106-.618.203a20 20 0 0 1-1.976.506v28.573q1.013.194 2.024.482.546.155 1.077.356.383.144.754.319Z" fill-rule="evenodd" stroke-width=".25" stroke-linecap="round"/>
-                        </g>
-                    </svg>
-                </a>
-                <div class="nav_bar_text">
-                    <h3>Indextoz Interactive Corporation™</h3>
-                    <h5>Where small sparks ignite big digital creativity!</h5>
+<html>
+    <head>
+        <title>I²c site!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <audio id="a_push" preload="auto"><source id="au00" src="" type="audio/wav"></audio>
+        <audio id="a_release" preload="auto"><source id="au01" src="" type="audio/wav"></audio>
+        <script>
+            let source="https://raw.githubusercontent.com/sakamoto9016/I2c/main/assets/";
+            document.getElementById("au00").src=source+"audio/push.wav";
+            document.getElementById("au01").src=source+"audio/release.wav";
+            let audioPush = document.getElementById("a_push");
+            let audioRelease = document.getElementById("a_release");
+            audioPush.load();
+            audioRelease.load();
+            function copyCode(element) {
+                element.textContent = "Don't expect me to copy for you";
+                setTimeout(() => {
+                    element.textContent = "Useless copy code";
+                }, 2000)
+            }
+        </script>
+        <style>
+            body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin-top: 95px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            background-attachment: fixed;
+            background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
+            }
+            .nav_bar {
+            background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
+            border: 0px solid transparent;
+            /* border-radius: 10px; */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+            top: 0;
+            left: 0;
+            padding: 10px;
+            z-index: 1000;
+            position: fixed;
+            display: flex;
+            width: 100vw;
+            height: 60px;
+            }
+            .nav_bar_text{
+            margin-top: 5px;
+            }
+            .nav_bar_text h3 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            color: #000;
+            }
+            .nav_bar_text h5 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            color: #333;
+            }
+            .end_bar {
+            flex: 1;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+            text-align: left;
+            }
+            svg {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            }
+            .content {
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding: 15px;
+            background-color: #ffffff33;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            }
+            .button {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            padding: 15px;
+            background: linear-gradient(to bottom right, #b5d7f3, #83a6c2);
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            cursor: pointer;
+            }
+            .button:hover {
+            background: linear-gradient(to bottom right, #a6d0f3, #74a1c5);
+            }
+            .button:active{
+            background: linear-gradient(to bottom right, #83a6c2, #b5d7f3);
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+            }
+            .codebox {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 4px;
+            padding-bottom: 10px;
+            background: linear-gradient(to bottom right, #011322, #193d5a);
+            border-radius: 10px;
+            font-family: monospace;
+            text-align: left;
+            color: #0ff;
+            word-spacing: 0;
+            }
+            .codebox p{
+                margin: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                line-height: 1.2;
+            }
+            .codebox_title {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-bottom: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background: linear-gradient(to bottom right, #6fa6d3, #3a5d79);
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            align-items: center;
+            }
+            .codebox_title_btn {
+            margin-top: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: linear-gradient(to bottom right, #6fa6d3, #3a5d79);
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+            }
+            .codebox_title_btn:hover{
+                background: linear-gradient(to bottom right, #7fb9e9, #517c9e);
+            }
+            .codebox_title_btn:active{
+                background: linear-gradient(to bottom right, #3a5d79, #6fa6d3);
+                box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+            }
+        </style>
+        <div class="nav_bar">
+            <a href="https://sakamoto9016.github.io/I2cShowcase/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" shape-rendering="geometricPrecision" height="60" width="60">
+                    <g stroke="#000" stroke-miterlimit="10">
+                        <path d="M10 90V10h80v80z" fill="#fff" stroke-width="4"/>
+                        <path d="m42.869 33.16-.964 5.348h-1.108a5 5 0 0 1-.246-.39 8 8 0 0 1-.224-.421q-.12-.243-.229-.49a30 30 0 0 1-.699-1.735 21 21 0 0 1-.366-1.08q-.1-.326-.188-.654-.178-.675-.243-1.122l-.022-.18q1.493-.84 3.506-1.543l.132-.047a13.4 13.4 0 0 1 3.723-.703q.391-.02.782-.02.732 0 1.46.062.696.063 1.292.191.388.083.766.205 1.21.396 2.003 1.01.122.093.238.195c.415.362.753.804.994 1.3q.108.223.186.459c.193.585.304 1.194.33 1.81q.007.18.007.358a6.8 6.8 0 0 1-.41 2.299 9 9 0 0 1-.385.905c-.344.692-.752 1.35-1.22 1.965q-.469.62-.996 1.192a22 22 0 0 1-1.93 1.843q-.703.596-1.443 1.144a32 32 0 0 1-4.265 2.65v.29l1.494-.338h6.602l2.12-3.228h1.06q.096.669.167 1.504l.001.013q.072.84.14 1.68l.005.055a36 36 0 0 1 .096 1.687q.024.775.024 1.3v.025H38.725v-1.59a33 33 0 0 0 2.852-1.805q.57-.4 1.123-.821a28 28 0 0 0 3.614-3.253 21 21 0 0 0 1.625-1.967q.543-.748 1-1.55.879-1.546.995-2.946.018-.214.018-.427 0-1.323-.427-2.23a3.3 3.3 0 0 0-.392-.637q-.729-.922-2.718-1.024-.255-.013-.51-.012-.648-.004-1.286.101-.997.17-1.75.621Zm34.5 32.09.627.675a6.4 6.4 0 0 1-1.593 1.965q-.577.48-1.226.854a8.3 8.3 0 0 1-3.066 1.033q-.74.1-1.488.1-2.842 0-4.939-.892c-2.097-.892-2.562-1.446-3.493-2.554s-1.63-2.441-2.096-4a16.5 16.5 0 0 1-.597-3.077q-.104-1.048-.102-2.102 0-6.12 2.988-9.372c2.988-3.252 4.706-3.253 8.143-3.253q1.053-.001 2.102.09 1.129.103 2.114.32.769.168 1.517.409a11.4 11.4 0 0 1 1.64.675 30 30 0 0 1-.19 1.576 42 42 0 0 1-.34 1.99q-.135.698-.317 1.387-.18.673-.387 1.243-.12.327-.26.646h-1.302l-2.023-5.734a2.4 2.4 0 0 0-1.043-.416 6 6 0 0 0-.72-.058 14 14 0 0 0-.454-.007 7.2 7.2 0 0 0-2.205.321 5.66 5.66 0 0 0-2.854 2.064q-1.537 2.055-1.75 6.565a32 32 0 0 0-.033 1.506q0 1.83.506 3.565c.506 1.735.851 2.193 1.542 3.108s1.558 1.647 2.602 2.193c.71.366 1.475.61 2.265.721q.683.1 1.373.098.698.002 1.392-.092a7 7 0 0 0 1.547-.39q.578-.22 1.123-.512a7 7 0 0 0 .997-.644Zm-43.03 2.65v1.398H22.004v-1.397a14 14 0 0 1 3.855-1.157V38.171q-.964-.194-1.927-.506c-.963-.312-1.285-.442-1.928-.699v-1.397H34.34v1.397q-.62.274-1.261.496-.308.106-.618.203a20 20 0 0 1-1.976.506v28.573q1.013.194 2.024.482.546.155 1.077.356.383.144.754.319Z" fill-rule="evenodd" stroke-width=".25" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav_bar_text">
+                <h3>Indextoz Interactive Corporation™</h3>
+                <h5>Where small sparks ignite big digital creativity!</h5>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Number Guessing Game in Python</h2>
+            <h3>Introduction</h3>
+            <p>This simple Python script is a <strong>Number Guessing Game</strong> where the computer picks a random number between 1 and 10, and the player must guess it. The program provides hints (too high or too low) until the correct number is guessed.</p>
+            <p>This script demonstrates the use of <strong>loops</strong>, <strong>conditional statements</strong>, and <strong>user input handling</strong>, making it a great beginner-friendly project.</p>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>import random</p>
+                    <br>
+                    <p># Generate a random number between 1 and 10</p>
+                    <p>secret_number = random.randint(1, 10)</p>
+                    <br>
+                    <p>print("Welcome to the Number Guessing Game!")</p>
+                    <p>print("I have chosen a number between 1 and 10. Can you guess it?")</p>
+                    <br>
+                    <p># Loop until the user guesses correctly</p>
+                    <p>while True:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;guess = int(input("Enter your guess: "))</p>
+                    <br>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;if guess &lt; secret_number:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Too low! Try again.")</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;elif guess &gt; secret_number:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Too high! Try again.")</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;else:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Congratulations! The correct number was {secret_number}.")</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break</p>
                 </div>
             </div>
-            <div class="content">
-                <h2>Welcome to I²c!</h2>
-                <p>A place where absolutely nothing exists.</p>
-                <div class="button">
-                    <h>Ok, I don't care.</h>
+            <hr>
+            <h3>Code Explanation</h3>
+            <h4>1. Importing the Random Module</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>import random</p>
                 </div>
             </div>
-            <div class="content">
-                <h2>Lorem ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, tortor vitae faucibus porttitor, felis urna porttitor nibh, ac pretium velit augue ac lectus. Nulla egestas est sed ullamcorper mattis. Donec rhoncus posuere lorem, id euismod mauris bibendum ac. Proin vitae ullamcorper massa. Nullam mauris est, aliquam et justo sed, varius pulvinar erat. Praesent posuere aliquet laoreet. Aliquam eu elementum purus. Curabitur turpis turpis, vulputate maximus ipsum sed, ultricies varius urna. Integer commodo efficitur porta. Quisque vel magna pellentesque, tincidunt est nec, efficitur elit. Proin cursus magna eu est bibendum, id mollis mauris iaculis.</p>
-                <p>Morbi libero arcu, gravida in tincidunt sit amet, aliquet vitae mi. Aliquam augue velit, mattis eget tellus vel, luctus ultrices nulla. Aenean dolor tortor, placerat sit amet ipsum ac, vehicula consequat nisi. Cras laoreet ultricies elit, id laoreet mauris. Donec sagittis nulla mauris, vulputate sollicitudin risus ultrices ut. Morbi et metus eget ex egestas tincidunt id vel nunc. Donec quis magna elit. Ut molestie lectus vitae mauris malesuada porta.</p>
-                <p>Suspendisse condimentum arcu quis eros fermentum euismod. Nam sagittis accumsan porttitor. Proin consequat luctus nibh. Etiam sem eros, euismod sit amet purus sed, accumsan faucibus lectus. Suspendisse ut feugiat ex, et euismod ex. Suspendisse semper massa id felis sollicitudin pellentesque non eu enim. Pellentesque tincidunt aliquet massa nec lacinia. Ut quis dui sed odio consectetur ullamcorper sed id urna. Duis a lacus euismod, fermentum odio tempor, maximus lectus. Nulla nec ante ac leo posuere porttitor. Quisque porttitor porttitor mi, nec auctor ex laoreet at. Praesent eros odio, tincidunt laoreet ante a, vestibulum gravida lectus. Proin rutrum diam id sodales laoreet. Nulla dui lorem, tempus id finibus a, cursus nec ligula.</p>
-                <p>Suspendisse ac magna nibh. Praesent ultrices sed urna vitae elementum. Donec vitae tristique mauris. Nam tincidunt, orci ac interdum volutpat, turpis purus vestibulum massa, a tristique dui erat eu quam. Vestibulum eget rhoncus felis. Proin vel risus urna. Morbi dignissim arcu nisi, vel consectetur ante eleifend et. Curabitur sed commodo ipsum. Aenean vel tellus ullamcorper, ultrices nisl vel, condimentum quam. Nam maximus sodales tortor vitae porta. Sed semper maximus vehicula. Duis condimentum ultricies consequat. Mauris vulputate enim felis, vel semper neque rhoncus sit amet. Donec fringilla vitae tellus id fringilla.</p>
-                <p>In in dui mi. Maecenas vitae odio purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis volutpat magna et nisi fermentum sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id tellus sed nulla vulputate tincidunt. Curabitur felis purus, blandit quis odio eget, bibendum ultrices justo. In mollis, arcu non laoreet laoreet, ante felis imperdiet nunc, non malesuada ex eros et mauris. Etiam convallis malesuada est vitae tincidunt. Nulla efficitur fermentum leo, at sagittis eros condimentum ut. In consequat, ex non dapibus fringilla, libero mauris laoreet mauris, vitae hendrerit augue sapien ac lorem. Maecenas dictum lacinia mollis.</p>
+            <ul><li>The <code>random</code> module is imported to generate a random number for the game.</li></ul>
+            <h4>2. Generating a Secret Number</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>secret_number = random.randint(1, 10)</p>
+                </div>
             </div>
-            <div class="end_bar">
-                <p>© 2025 Indextoz Interactive Corporation. All rights reserved.</p>
-                <p>Indextoz's Projects by <strong>Andrew Dex</strong> & <strong>Winston Dex</strong> are licensed under 
-                    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.
+            <ul>
+                <li>The <code>randint(1, 10)</code> function generates a random integer between 1 and 10.</li>
+                <li>This number is stored in <code>secret_number</code>, which the player has to guess.</li>
+            </ul>
+            <h4>3. Displaying Game Instructions</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>print("Welcome to the Number Guessing Game!")</p>
+                    <p>print("I have chosen a number between 1 and 10. Can you guess it?")</p>
+                </div>
+            </div>
+            <ul><li>These <code>print()</code> statements introduce the game and explain what the player needs to do.</li></ul>
+            <h4>4. The Guessing Loop</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>while True:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;guess = int(input("Enter your guess: "))</p>
+                </div>
+            </div>
+            <ul>
+                <li>The game runs inside an <strong>infinite loop</strong> (<code>while True</code>), ensuring the player keeps guessing until they get it right.</li>
+                <li>The <code>input()</code> function takes the player's guess, and <code>int()</code> converts it into a number.</li>
+            </ul>
+            <h4>5. Checking the Guess</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>if guess < secret_number:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;print("Too low! Try again.")</p>
+                    <p>elif guess > secret_number:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;print("Too high! Try again.")</p>
+                </div>
+            </div>
+            <ul>
+                <li>If the guess is <strong>lower</strong> than the secret number, the game tells the player to guess <strong>higher</strong>.</li>
+                <li>If the guess is <strong>higher</strong>, the game tells the player to guess <strong>lower</strong>.</li>
+            </ul>
+            <h4>6. Winning Condition</h4>
+            <div class="codebox">
+                <div class="codebox_title"><span>Python</span><div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div></div>
+                <div>
+                    <p>else:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Congratulations! The correct number was {secret_number}.")</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;break</p>
+                </div>
+            </div>
+            <ul>
+                <li>If the guess <strong>matches</strong> <code>secret_number</code>, the player wins!</li>
+                <li>The game prints the correct number and <strong>exits the loop</strong> using <code>break</code>.</li>
+            </ul>
+            <hr>
+            <h3>How the Game Works</h3>
+            <ol>
+                <li>The program picks a <strong>random number</strong> between 1 and 10.</li>
+                <li>The player <strong>enters a guess</strong> using <code>input()</code>.</li>
+                <li>If the guess is <strong>too high</strong> or <strong>too low</strong>, the game provides <strong>hints</strong>.</li>
+                <li>The player keeps guessing until they find the <strong>correct number</strong>.</li>
+                <li>Once guessed correctly, the game <strong>congratulates the player</strong> and <strong>ends</strong>.</li>
+            </ol>
+            <p>This project is a great way to <strong>practice loops</strong>, <strong>conditions</strong>, and <strong>user input handling in Python</strong>. You can improve it by adding features like <strong>score tracking</strong>, <strong>difficulty levels</strong>, or <strong>a limited number of guesses</strong>!</p>
+        </div>
+        <div class="content">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, tortor vitae faucibus porttitor, felis urna porttitor nibh, ac pretium velit augue ac lectus. Nulla egestas est sed ullamcorper mattis. Donec rhoncus posuere lorem, id euismod mauris bibendum ac. Proin vitae ullamcorper massa. Nullam mauris est, aliquam et justo sed, varius pulvinar erat. Praesent posuere aliquet laoreet. Aliquam eu elementum purus. Curabitur turpis turpis, vulputate maximus ipsum sed, ultricies varius urna. Integer commodo efficitur porta. Quisque vel magna pellentesque, tincidunt est nec, efficitur elit. Proin cursus magna eu est bibendum, id mollis mauris iaculis.</p>
+            <p>Morbi libero arcu, gravida in tincidunt sit amet, aliquet vitae mi. Aliquam augue velit, mattis eget tellus vel, luctus ultrices nulla. Aenean dolor tortor, placerat sit amet ipsum ac, vehicula consequat nisi. Cras laoreet ultricies elit, id laoreet mauris. Donec sagittis nulla mauris, vulputate sollicitudin risus ultrices ut. Morbi et metus eget ex egestas tincidunt id vel nunc. Donec quis magna elit. Ut molestie lectus vitae mauris malesuada porta.</p>
+            <p>Suspendisse condimentum arcu quis eros fermentum euismod. Nam sagittis accumsan porttitor. Proin consequat luctus nibh. Etiam sem eros, euismod sit amet purus sed, accumsan faucibus lectus. Suspendisse ut feugiat ex, et euismod ex. Suspendisse semper massa id felis sollicitudin pellentesque non eu enim. Pellentesque tincidunt aliquet massa nec lacinia. Ut quis dui sed odio consectetur ullamcorper sed id urna. Duis a lacus euismod, fermentum odio tempor, maximus lectus. Nulla nec ante ac leo posuere porttitor. Quisque porttitor porttitor mi, nec auctor ex laoreet at. Praesent eros odio, tincidunt laoreet ante a, vestibulum gravida lectus. Proin rutrum diam id sodales laoreet. Nulla dui lorem, tempus id finibus a, cursus nec ligula.</p>
+            <p>Suspendisse ac magna nibh. Praesent ultrices sed urna vitae elementum. Donec vitae tristique mauris. Nam tincidunt, orci ac interdum volutpat, turpis purus vestibulum massa, a tristique dui erat eu quam. Vestibulum eget rhoncus felis. Proin vel risus urna. Morbi dignissim arcu nisi, vel consectetur ante eleifend et. Curabitur sed commodo ipsum. Aenean vel tellus ullamcorper, ultrices nisl vel, condimentum quam. Nam maximus sodales tortor vitae porta. Sed semper maximus vehicula. Duis condimentum ultricies consequat. Mauris vulputate enim felis, vel semper neque rhoncus sit amet. Donec fringilla vitae tellus id fringilla.</p>
+            <p>In in dui mi. Maecenas vitae odio purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis volutpat magna et nisi fermentum sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id tellus sed nulla vulputate tincidunt. Curabitur felis purus, blandit quis odio eget, bibendum ultrices justo. In mollis, arcu non laoreet laoreet, ante felis imperdiet nunc, non malesuada ex eros et mauris. Etiam convallis malesuada est vitae tincidunt. Nulla efficitur fermentum leo, at sagittis eros condimentum ut. In consequat, ex non dapibus fringilla, libero mauris laoreet mauris, vitae hendrerit augue sapien ac lorem. Maecenas dictum lacinia mollis.</p>
+            <div class="button">Lorem me now!</div>
+            <div class="button">Ipsum me please!</div>
+        </div>
+        <div class="end_bar">
+            <p>© 2025 Indextoz Interactive Corporation. All rights reserved.</p>
+            <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                <h2 style="margin: 0;">Indextoz's Projects</h2>
+                <p style="margin: 0; font-size: 14px;">
+                    by <strong>Andrew Dex</strong> & <strong>Winston Dex</strong> are licensed under 
+                    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                        CC BY-NC-ND 4.0
+                    </a>.
                 </p>
             </div>
-        </body>
-    </html>
+        </div>
+    </body>
+</html>
