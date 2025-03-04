@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>I²c site!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function calculateYears() {
+                let currentYear = new Date().getFullYear();
+                let yearsPassed = currentYear - 1992;
+                document.getElementById("result").textContent = yearsPassed;
+            }
+        </script>
+    </head>
+    <body onload="calculateYears()">
+        <audio id="a_push" preload="auto">
+            <source id="au00" src="" type="audio/wav">
+        </audio>
+        <audio id="a_release" preload="auto">
+            <source id="au01" src="" type="audio/wav">
+        </audio>
+        <script>
+            let source="https://raw.githubusercontent.com/sakamoto9016/I2c/main/assets/";
+            document.getElementById("au00").src=source+"audio/push.wav";
+            document.getElementById("au01").src=source+"audio/release.wav";
+            let audioPush = document.getElementById("a_push");
+            let audioRelease = document.getElementById("a_release");
+            audioPush.load();
+            audioRelease.load();
+            function copyCode(element) {
+                element.textContent = "Don't expect me to copy for you";
+                setTimeout(() => {
+                    element.textContent = "Useless copy code";
+                }, 2000)
+            }
+            function toggleDark() {
+                const root = document.documentElement;
+            
+                if (root.classList.contains('dark-mode')) {
+                    root.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light'); // Save preference
+                } else {
+                root.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark'); // Save preference
+                }
+            }
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        </script>
+        <style>
+            :root {
+            --glowInner: transparent;--glowColor: #fff;
+            --main-color-1: #b5d7f3;
+            --main-color-2: #83a6c2;
+            --codebtnhov-color-1: #7fb9e9;
+            --codebtnhov-color-2: #517c9e;
+            --codebg-color-1: #011322;
+            --codebg-color-2: #193d5a;
+            --code-color: #0ff;
+            --text-color: #000;
+            --slogan-color: #333;
+            --logo-color: #000;
+            --board-color: #ffffff33;
+            --hover-color-1: #a6d0f3;
+            --hover-color-2: #74a1c5;
+            --codebtn-color-1: #6fa6d3;
+            --codebtn-color-2: #3a5d79;
+            --codebtntxt-color: #fff;
+            --link-color: #00f;
+            }
+            .dark-mode {
+            --main-color-1: #26567e;
+            --main-color-2: #0c2d47;
+            --codebtnhov-color-1: #67a6da;
+            --codebtnhov-color-2: #3f6c8f;
+            --codebg-color-1: #000000;
+            --codebg-color-2: #0a253b;
+            --code-color: rgb(0, 63, 255);
+            --text-color: #ffffff;
+            --slogan-color: #ddd;
+            --logo-color: #ffffff;
+            --board-color: #00000033;
+            --hover-color-1: #2d699b;
+            --hover-color-2: #124064;
+            --codebtn-color-1: #5b90bb;
+            --codebtn-color-2: #213e55;
+            --codebtntxt-color: #fff;
+            --link-color: #07f;
+            }
+            .glitch {
+            animation: glitch 3s steps(100) infinite;
+            }
+            @keyframes glitch{0%,1%,2%,3%,4%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}5%,6%,7%,8%,9%,10%{text-shadow:-3px 0 0 red,3px 0 0 #0c33f5;filter:blur(0)}11%,12%,13%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}14%,15%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}16%,17%,18%,19%,20%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}21%,22%,23%,24%,25%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}26%,27%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(.5px)}28%,29%,30%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}31%,32%,33%,34%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}35%,36%,37%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(.5px)}38%,39%,40%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}41%{text-shadow:45px 0 0 #0c33f5,-45px 0 0 lime;filter:blur(0)}42%{text-shadow:0 0 0 #0c33f5,0 0 0 lime;filter:blur(0)}43%,44%,45%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}46%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}47%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(.5px)}48%,49%,50%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}51%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}}
+            .neon {
+            text-shadow: 0 0 15px var(--glowInner), 0 0 20px var(--glowInner),
+            0 0 30px var(--glowColor), 0 0 40px var(--glowColor),
+            0 0 50px var(--glowColor), 0 0 60px var(--glowColor),
+            0 0 70px var(--glowColor);
+            }
+            .flicker1 {
+            color: inherit;
+            display: inline;
+            animation: flicker1 5s infinite;
+            }
+            .flicker2 {
+            color: inherit;
+            display: inline;
+            animation: flicker2 3s infinite;
+            }
+            .flicker3 {
+            color: inherit;
+            display: inline;
+            animation: flicker1 2s infinite;
+            }
+            @keyframes flicker1 {
+            0% {
+            opacity: 1;
+            }
+            9% {
+            opacity: 1;
+            }
+            10% {
+            opacity: 0;
+            }
+            12% {
+            opacity: 0;
+            }
+            13% {
+            opacity: 1;
+            }
+            18% {
+            opacity: 1;
+            }
+            19% {
+            opacity: 0;
+            }
+            20% {
+            opacity: 0;
+            }
+            22% {
+            opacity: 1;
+            }
+            23% {
+            opacity: 1;
+            }
+            24% {
+            opacity: 0;
+            }
+            25% {
+            opacity: 0;
+            }
+            26% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 1;
+            }
+            }
+            @keyframes flicker2 {
+            0% {
+            opacity: 1;
+            }
+            15% {
+            opacity: 1;
+            }
+            16% {
+            opacity: 0;
+            }
+            18% {
+            opacity: 0;
+            }
+            20% {
+            opacity: 1;
+            }
+            23% {
+            opacity: 1;
+            }
+            24% {
+            opacity: 0;
+            }
+            50% {
+            opacity: 0;
+            }
+            51% {
+            opacity: 1;
+            }
+            75% {
+            opacity: 1;
+            }
+            76% {
+            opacity: 0;
+            }
+            78% {
+            opacity: 0;
+            }
+            79% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 1;
+            }
+            }
+            body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin-top: 95px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            background-attachment: fixed;
+            background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
+            color: var(--text-color);
+            }
+            body a {
+            color: var(--link-color);
+            }
+            .hide_on_small{
+            display: block;
+            }
+            @media (max-width: 520px) {
+            .hide_on_small {
+            display: none;
+            }
+            }
+            .nav_bar {
+            background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
+            border: 0px solid transparent;
+            /* border-radius: 10px; */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+            top: 0;
+            left: 0;
+            padding: 10px;
+            z-index: 1000;
+            position: fixed;
+            display: flex;
+            width: 100vw;
+            height: 60px;
+            }
+            .nav_bar_text{
+            margin-top: 5px;
+            }
+            .nav_bar_text h3 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            color: var(--logo-color);
+            }
+            .nav_bar_text h5 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            color: var(--slogan-color)
+            }
+            .end_bar {
+            flex: 1;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+            text-align: left;
+            }
+            svg {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            }
+            .content {
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding: 15px;
+            background-color: var(--board-color);
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            }
+            .button {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            padding: 15px;
+            background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            cursor: pointer;
+            }
+            .button:hover {
+            background: linear-gradient(to bottom right, var(--hover-color-1), var(--hover-color-2));
+            }
+            .button:active{
+            background: linear-gradient(to bottom right, var(--main-color-2), var(--main-color-1));
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+            }
+            .codebox {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 4px;
+            padding-bottom: 10px;
+            background: linear-gradient(to bottom right, var(--codebg-color-1), var(--codebg-color-2));
+            border-radius: 10px;
+            font-family: monospace;
+            text-align: left;
+            color: var(--code-color);
+            word-spacing: 0;
+            }
+            .codebox p{
+            margin: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: 1.2;
+            }
+            .codebox_title {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-bottom: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color);
+            align-items: center;
+            }
+            .codebox_title_btn {
+            margin-top: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color);
+            cursor: pointer;
+            }
+            .codebox_title_btn:hover{
+            background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2));
+            }
+            .codebox_title_btn:active{
+            background: linear-gradient(to bottom right, var(--codebtn-color-2), var(--codebtn-color-1));
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+            }
+            .scroll-container {
+            width: 100%;  /* Adjust as needed */
+            overflow-x: auto; /* Enables horizontal scroll */
+            white-space: nowrap; /* Prevents text from wrapping */
+            }
+        </style>
+        <div class="nav_bar">
+            <a href="https://sakamoto9016.github.io/I2cShowcase/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" shape-rendering="geometricPrecision" height="60" width="60">
+                    <g stroke="#000" stroke-miterlimit="10">
+                        <path d="M10 90V10h80v80z" fill="#fff" stroke-width="4"/>
+                        <path d="m42.869 33.16-.964 5.348h-1.108a5 5 0 0 1-.246-.39 8 8 0 0 1-.224-.421q-.12-.243-.229-.49a30 30 0 0 1-.699-1.735 21 21 0 0 1-.366-1.08q-.1-.326-.188-.654-.178-.675-.243-1.122l-.022-.18q1.493-.84 3.506-1.543l.132-.047a13.4 13.4 0 0 1 3.723-.703q.391-.02.782-.02.732 0 1.46.062.696.063 1.292.191.388.083.766.205 1.21.396 2.003 1.01.122.093.238.195c.415.362.753.804.994 1.3q.108.223.186.459c.193.585.304 1.194.33 1.81q.007.18.007.358a6.8 6.8 0 0 1-.41 2.299 9 9 0 0 1-.385.905c-.344.692-.752 1.35-1.22 1.965q-.469.62-.996 1.192a22 22 0 0 1-1.93 1.843q-.703.596-1.443 1.144a32 32 0 0 1-4.265 2.65v.29l1.494-.338h6.602l2.12-3.228h1.06q.096.669.167 1.504l.001.013q.072.84.14 1.68l.005.055a36 36 0 0 1 .096 1.687q.024.775.024 1.3v.025H38.725v-1.59a33 33 0 0 0 2.852-1.805q.57-.4 1.123-.821a28 28 0 0 0 3.614-3.253 21 21 0 0 0 1.625-1.967q.543-.748 1-1.55.879-1.546.995-2.946.018-.214.018-.427 0-1.323-.427-2.23a3.3 3.3 0 0 0-.392-.637q-.729-.922-2.718-1.024-.255-.013-.51-.012-.648-.004-1.286.101-.997.17-1.75.621Zm34.5 32.09.627.675a6.4 6.4 0 0 1-1.593 1.965q-.577.48-1.226.854a8.3 8.3 0 0 1-3.066 1.033q-.74.1-1.488.1-2.842 0-4.939-.892c-2.097-.892-2.562-1.446-3.493-2.554s-1.63-2.441-2.096-4a16.5 16.5 0 0 1-.597-3.077q-.104-1.048-.102-2.102 0-6.12 2.988-9.372c2.988-3.252 4.706-3.253 8.143-3.253q1.053-.001 2.102.09 1.129.103 2.114.32.769.168 1.517.409a11.4 11.4 0 0 1 1.64.675 30 30 0 0 1-.19 1.576 42 42 0 0 1-.34 1.99q-.135.698-.317 1.387-.18.673-.387 1.243-.12.327-.26.646h-1.302l-2.023-5.734a2.4 2.4 0 0 0-1.043-.416 6 6 0 0 0-.72-.058 14 14 0 0 0-.454-.007 7.2 7.2 0 0 0-2.205.321 5.66 5.66 0 0 0-2.854 2.064q-1.537 2.055-1.75 6.565a32 32 0 0 0-.033 1.506q0 1.83.506 3.565c.506 1.735.851 2.193 1.542 3.108s1.558 1.647 2.602 2.193c.71.366 1.475.61 2.265.721q.683.1 1.373.098.698.002 1.392-.092a7 7 0 0 0 1.547-.39q.578-.22 1.123-.512a7 7 0 0 0 .997-.644Zm-43.03 2.65v1.398H22.004v-1.397a14 14 0 0 1 3.855-1.157V38.171q-.964-.194-1.927-.506c-.963-.312-1.285-.442-1.928-.699v-1.397H34.34v1.397q-.62.274-1.261.496-.308.106-.618.203a20 20 0 0 1-1.976.506v28.573q1.013.194 2.024.482.546.155 1.077.356.383.144.754.319Z" fill-rule="evenodd" stroke-width=".25" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav_bar_text">
+                <h3 class="hide_on_small"><span>Indextoz Interactive Corporation™</span></h3>
+                <h5 class="hide_on_small">Where small sparks ignite big digital creativity!</h5>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Error occurred!</h2>
+                <ol>
+                    <li>
+                        <h3>Questions</h3>
+                        <ol>
+                            <li>
+                                <h4>What error did I encounter?</h4>
+                                <p>You encountered a very <strong>dangerous</strong> <span style="color: red;">ERROR_404</span>. Here is the source code:</p>
+                                <div class="codebox">
+                                    <div class="codebox_title">
+                                        <span>ASCII</span>
+                                        <div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div>
+                                    </div>
+                                    <div class="scroll-container">
+                                        <pre class="glitch">
+    __/\\\\\\\\\\\\\\\______________________________________________________________________________/\\\________/\\\\\\\_______________/\\\____TM      
+     _\/\\\///////////_____________________________________________________________________________/\\\\\______/\\\/////\\\___________/\\\\\____       
+      _\/\\\______________________________________________________________________________________/\\\/\\\_____/\\\____\//\\\________/\\\/\\\____      
+       _\/\\\\\\\\\\\______/\\/\\\\\\\___/\\/\\\\\\\______/\\\\\_____/\\/\\\\\\\_________________/\\\/\/\\\____\/\\\_____\/\\\______/\\\/\/\\\____     
+        _\/\\\///////______\/\\\/////\\\_\/\\\/////\\\___/\\\///\\\__\/\\\/////\\\______________/\\\/__\/\\\____\/\\\_____\/\\\____/\\\/__\/\\\____    
+         _\/\\\_____________\/\\\___\///__\/\\\___\///___/\\\__\//\\\_\/\\\___\///_____________/\\\\\\\\\\\\\\\\_\/\\\_____\/\\\__/\\\\\\\\\\\\\\\\_   
+          _\/\\\_____________\/\\\_________\/\\\_________\//\\\__/\\\__\/\\\___________________\///////////\\\//__\//\\\____/\\\__\///////////\\\//__  
+           _\/\\\\\\\\\\\\\\\_\/\\\_________\/\\\__________\///\\\\\/___\/\\\_____________________________\/\\\_____\///\\\\\\\/_____________\/\\\____ 
+            _\///////////////__\///__________\///_____________\/////_____\///______________________________\///________\///////_______________\///_____
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>How old is it?</h4>
+                                <p>Error 404 is <b><span id="result"></span> years old</b>.</p>
+                            </li>
+                            <li>
+                                <h4>When did Error 404 first came out?</h4>
+                                <p>The <b>Error 404</b> "<b>Not Found</b>" message has been around since the early days of the <b>World Wide Web</b>. It originated with the <b>HTTP 0.9 and 1.0 specifications</b>, which were published in <b>1992</b> by <b>Tim Berners-Lee and the IETF (Internet Engineering Task Force)</b>. The first official documentation of HTTP 1.0, including status codes like 404, appeared in <b>RFC 1945</b> (May 1996).</p>
+                                <p>So while the concept of "<b>404 Not Found</b>" existed in <b>1992</b>, it became officially standardized in <b>1996</b>.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h3>The Tragic Tale of a 404 Page</h3>
+                        <ol>
+                            <li>
+                                <h4>The Request Begins</h4>
+                                <ul>
+                                    <li>A user types a URL into their browser or clicks a link.</li>
+                                    <li>The browser sends an HTTP request to the web server, asking for a specific resource (a webpage, image, or file).</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>Server Checks Its Map</h4>
+                                <ul>
+                                    <li>The web server receives the request and checks its file system or database to see if the requested file exists.</li>
+                                    <li>If the file is found, the server happily sends it back with an HTTP 200 OK status.</li>
+                                    <li>If the file is missing, things start to go very wrong...</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>The Horror Unfolds</h4>
+                                <ul>
+                                    <li>The server realizes the requested resource does not exist or has been moved without a redirect.</li>
+                                    <li>Since it has no valid response, it generates an HTTP 404 Not Found status.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>The 404 Page Awakens</h4>
+                                <ul>
+                                    <li>Instead of an empty response, the server loads the custom 404 page (if one exists).</li>
+                                    <li>
+                                        The browser receives this sad little error page, which tells the user:
+                                        <ul><li>❝Sorry, what you're looking for is gone! Maybe it never existed? Maybe it was deleted? Maybe the link is broken? Who knows!❞</li></ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>The User's Fate</h4>
+                                <ul>
+                                    <li>
+                                        The user either:
+                                        <ul>
+                                            <li>Checks their URL for typos.</li>
+                                            <li>Hits the back button in frustration.</li>
+                                            <li>Leaves the website forever.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>The Server Logs the Failure</h4>
+                                <ul>
+                                    <li>The server might log the missing request, allowing the admin to see which pages are broken.</li>
+                                    <li>If the website owner is proactive, they might set up a redirect (301/302) so future users won’t hit the same dead end.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h3>Why Does 404 Happen?</h3>
+                        <ul>
+                            <li>The page was deleted but not redirected.</li>
+                            <li>The user typed the wrong URL.</li>
+                            <li>The page was moved without updating links.</li>
+                            <li>The link was broken (bad coding, outdated bookmarks, etc.).</li>
+                            <li>A network issue messed up the request.</li>
+                        </ul>
+                    </li>
+                </ol>
+        </div>
+        <div class="content">
+            <h2>Quick strategy</h2>
+            <p>What you can do now is to return to the main page.</p>
+            <div class="button">Redirect to Home page</div>
+        </div>
+        <div class="content">
+            <h1>Today is kinda...</h1>
+            <h2>...kinda...</h2>
+            <h3>...uhh...</h3>
+            <h4>...erm...</h4>
+            <h5>...ah...</h5>
+            <h6>...nevermind.</h6>
+        </div>
+        <div class="end_bar">
+            <p>© 2024-2025 Indextoz Interactive Corporation. All rights reserved.</p>
+            <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                <h2 style="margin: 0;" class="glitch">Indextoz's Projects</h2>
+                <p style="margin: 0; font-size: 14px;">
+                    by <strong>Andrew Dex</strong> & <strong>Winston Dex</strong> are licensed under 
+                    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    CC BY-NC-ND 4.0
+                    </a>.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
