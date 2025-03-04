@@ -4,7 +4,14 @@
         <title>404, boohoo.</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <script>
+        function calculateYears() {
+            let currentYear = new Date().getFullYear();
+            let yearsPassed = currentYear - 1992;
+            document.getElementById("result").textContent = yearsPassed;
+        }
+    </script>
+    <body onload="calculateYears()">
         <audio id="a_push" preload="auto">
             <source id="au00" src="" type="audio/wav">
         </audio>
