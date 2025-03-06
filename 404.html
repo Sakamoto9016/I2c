@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>404, boohoo.</title>
+        <title>I²c site!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <script>
-        function calculateYears() {
-            let currentYear = new Date().getFullYear();
-            let yearsPassed = currentYear - 1992;
-            document.getElementById("result").textContent = yearsPassed;
-        }
-    </script>
-    <body onload="calculateYears()">
+    <body>
         <audio id="a_push" preload="auto">
             <source id="au00" src="" type="audio/wav">
         </audio>
@@ -20,189 +13,68 @@
         </audio>
         <script>
             let source="https://raw.githubusercontent.com/sakamoto9016/I2c/main/assets/";
-            document.getElementById("au00").src=source+"audio/push.wav";
-            document.getElementById("au01").src=source+"audio/release.wav";
-            let audioPush = document.getElementById("a_push");
-            let audioRelease = document.getElementById("a_release");
-            audioPush.load();
-            audioRelease.load();
             function copyCode(element) {
                 element.textContent = "Don't expect me to copy for you";
-                setTimeout(() => {
-                    element.textContent = "Useless copy code";
-                }, 2000)
-            }
+                setTimeout(() => { element.textContent = "Useless copy code"; }, 2000) }
             function toggleDark() {
                 const root = document.documentElement;
                 const button = document.getElementById("darkModeToggle");
-
                 if (root.classList.contains('dark-mode')) {
                     root.classList.remove('dark-mode');
-                    localStorage.setItem('theme', 'light'); // Save preference
+                    localStorage.setItem('theme', 'light');
                     button.innerHTML = "Daylight"; 
                 } else {
                     root.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark'); // Save preference
+                    localStorage.setItem('theme', 'dark');
                     button.innerHTML = "Moonlight"; 
                 }
             }
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark-mode');
+            if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark-mode'); }
+            function generateLetters() {
+               let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+               let result = "";
+               for (let i = 0; i < 10; i++) {
+                   result += letters.charAt(Math.floor(Math.random() * letters.length));
+               }
+               document.getElementById("r_out").textContent = result;
             }
+            setInterval(generateLetters, 100);
+            generateLetters();
         </script>
         <style>
             :root {
-            --glowInner: transparent;--glowColor: #fff;
-            --main-color-1: #b5d7f3;
-            --main-color-2: #83a6c2;
-            --codebtnhov-color-1: #7fb9e9;
-            --codebtnhov-color-2: #517c9e;
-            --codebg-color-1: #011322;
-            --codebg-color-2: #193d5a;
-            --code-color: #0ff;
-            --text-color: #000;
-            --slogan-color: #333;
-            --logo-color: #000;
-            --board-color: #ffffff33;
-            --hover-color-1: #a6d0f3;
-            --hover-color-2: #74a1c5;
-            --codebtn-color-1: #6fa6d3;
-            --codebtn-color-2: #3a5d79;
-            --codebtntxt-color: #fff;
-            --link-color: #00f;
+            --glowInner: transparent; --glowColor: #fff; --agoraphobiaColor1:255,255,255;
+            --main-color-1: #b5d7f3; --main-color-2: #83a6c2;
+            --codebtnhov-color-1: #7fb9e9; --codebtnhov-color-2: #517c9e;
+            --codebg-color-1: #011322; --codebg-color-2: #193d5a;
+            --code-color: #0ff; --text-color: #000;
+            --slogan-color: #333; --logo-color: #000; --board-color: #ffffff33;
+            --hover-color-1: #a6d0f3; --hover-color-2: #74a1c5;
+            --codebtn-color-1: #6fa6d3; --codebtn-color-2: #3a5d79;
+            --codebtntxt-color: #fff; --link-color: #00f;
             }
             .dark-mode {
-            --main-color-1: #26567e;
-            --main-color-2: #0c2d47;
-            --codebtnhov-color-1: #67a6da;
-            --codebtnhov-color-2: #3f6c8f;
-            --codebg-color-1: #000000;
-            --codebg-color-2: #0a253b;
-            --code-color: rgb(0, 63, 255);
-            --text-color: #ffffff;
-            --slogan-color: #ddd;
-            --logo-color: #ffffff;
-            --board-color: #00000033;
-            --hover-color-1: #2d699b;
-            --hover-color-2: #124064;
-            --codebtn-color-1: #5b90bb;
-            --codebtn-color-2: #213e55;
-            --codebtntxt-color: #fff;
-            --link-color: #07f;
+            --main-color-1: #26567e; --main-color-2: #0c2d47;
+            --codebtnhov-color-1: #67a6da; --codebtnhov-color-2: #3f6c8f;
+            --codebg-color-1: #000000; --codebg-color-2: #0a253b;
+            --code-color: rgb(0, 63, 255); --text-color: #ffffff;
+            --slogan-color: #ddd; --logo-color: #ffffff; --board-color: #00000033;
+            --hover-color-1: #2d699b; --hover-color-2: #124064;
+            --codebtn-color-1: #5b90bb; --codebtn-color-2: #213e55;
+            --codebtntxt-color: #fff; --link-color: #07f;
             }
-            .glitch {
-            animation: glitch 3s steps(100) infinite;
-            }
+            /* #region Output Styling */
+            .glitch { animation: glitch 3s steps(100) infinite; }
             @keyframes glitch{0%,1%,2%,3%,4%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}5%,6%,7%,8%,9%,10%{text-shadow:-3px 0 0 red,3px 0 0 #0c33f5;filter:blur(0)}11%,12%,13%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}14%,15%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}16%,17%,18%,19%,20%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}21%,22%,23%,24%,25%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}26%,27%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(.5px)}28%,29%,30%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}31%,32%,33%,34%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}35%,36%,37%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(.5px)}38%,39%,40%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}41%{text-shadow:45px 0 0 #0c33f5,-45px 0 0 lime;filter:blur(0)}42%{text-shadow:0 0 0 #0c33f5,0 0 0 lime;filter:blur(0)}43%,44%,45%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}46%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}47%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(.5px)}48%,49%,50%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}51%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}}
-            .neon {
-            text-shadow: 0 0 15px var(--glowInner), 0 0 20px var(--glowInner),
-            0 0 30px var(--glowColor), 0 0 40px var(--glowColor),
-            0 0 50px var(--glowColor), 0 0 60px var(--glowColor),
-            0 0 70px var(--glowColor);
-            }
-            .flicker1 {
-            color: inherit;
-            display: inline;
-            animation: flicker1 5s infinite;
-            }
-            .flicker2 {
-            color: inherit;
-            display: inline;
-            animation: flicker2 3s infinite;
-            }
-            .flicker3 {
-            color: inherit;
-            display: inline;
-            animation: flicker1 2s infinite;
-            }
-            @keyframes flicker1 {
-            0% {
-            opacity: 1;
-            }
-            9% {
-            opacity: 1;
-            }
-            10% {
-            opacity: 0;
-            }
-            12% {
-            opacity: 0;
-            }
-            13% {
-            opacity: 1;
-            }
-            18% {
-            opacity: 1;
-            }
-            19% {
-            opacity: 0;
-            }
-            20% {
-            opacity: 0;
-            }
-            22% {
-            opacity: 1;
-            }
-            23% {
-            opacity: 1;
-            }
-            24% {
-            opacity: 0;
-            }
-            25% {
-            opacity: 0;
-            }
-            26% {
-            opacity: 1;
-            }
-            100% {
-            opacity: 1;
-            }
-            }
-            @keyframes flicker2 {
-            0% {
-            opacity: 1;
-            }
-            15% {
-            opacity: 1;
-            }
-            16% {
-            opacity: 0;
-            }
-            18% {
-            opacity: 0;
-            }
-            20% {
-            opacity: 1;
-            }
-            23% {
-            opacity: 1;
-            }
-            24% {
-            opacity: 0;
-            }
-            50% {
-            opacity: 0;
-            }
-            51% {
-            opacity: 1;
-            }
-            75% {
-            opacity: 1;
-            }
-            76% {
-            opacity: 0;
-            }
-            78% {
-            opacity: 0;
-            }
-            79% {
-            opacity: 1;
-            }
-            100% {
-            opacity: 1;
-            }
-            }
+            .neon { text-shadow: 0 0 15px var(--glowInner), 0 0 20px var(--glowInner), 0 0 30px var(--glowColor), 0 0 40px var(--glowColor), 0 0 50px var(--glowColor), 0 0 60px var(--glowColor), 0 0 70px var(--glowColor); }
+            .flicker1 { color: inherit; display: inline; animation: flicker1 5s infinite; }
+            .flicker2 { color: inherit; display: inline; animation: flicker2 3s infinite; }
+            .flicker3 { color: inherit; display: inline; animation: flicker1 2s infinite; }
+            @keyframes flicker1 { 0% { opacity: 1; } 9% { opacity: 1; } 10% { opacity: 0; } 12% { opacity: 0; } 13% { opacity: 1; } 18% { opacity: 1; } 19% { opacity: 0; } 20% { opacity: 0; } 22% { opacity: 1; } 23% { opacity: 1; } 24% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 100% { opacity: 1; } }
+            @keyframes flicker2 { 0% { opacity: 1; } 15% { opacity: 1; } 16% { opacity: 0; } 18% { opacity: 0; } 20% { opacity: 1; } 23% { opacity: 1; } 24% { opacity: 0; } 50% { opacity: 0; } 51% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 78% { opacity: 0; } 79% { opacity: 1; } 100% { opacity: 1; } }
+            .agoraphobia{ color:transparent !important; text-shadow:0 0 5px rgba(0, 0, 0, 0.5); animation:horror 5s infinite; }
+            @keyframes horror{ 0%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.1) } 5%{ text-shadow:-.05em 0.05em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 10%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.3) } 15%{ text-shadow:-0.05em 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 16%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 17%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 20%{ text-shadow:0.05em 0.005em 0.1em rgba(var(--agoraphobiaColor1),0.5) } 25%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.6) } 30%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.7) } 35%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.8) } 36%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 37%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.8) } 40%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.9) } 45%{ text-shadow:0 -.05em 0.005em rgba(var(--agoraphobiaColor1),0.3) } 50%{ text-shadow:0.01em 0.01em 0.005em rgba(var(--agoraphobiaColor1),0.7) } 55%{ text-shadow:-.01em -.01em 0.1em rgba(var(--agoraphobiaColor1),0.6) } 56%{ text-shadow:0.01em -.01em 0.005em rgba(var(--agoraphobiaColor1),1) } 57%{ text-shadow:-.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.6) } 60%{ text-shadow:0.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.5) } 65%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 70%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.3) } 75%{ text-shadow:0.01em -.01em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 76%{ text-shadow:-.01em 0.01em 0.005em rgba(var(--agoraphobiaColor1),1) } 77%{ text-shadow:0.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 80%{ text-shadow:0 0.01em 0.005em rgba(var(--agoraphobiaColor1),0.1) } 85%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.2) } 86%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 87%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.2) } 90%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.3) } 95%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 100%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.5) } }
+            /* #endregion */
             body {
             font-family: sans-serif;
             display: flex;
@@ -216,176 +88,97 @@
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             color: var(--text-color);
             }
-            body a {
-            color: var(--link-color);
-            }
-            .hide_on_small{
-            display: block;
-            }
-            @media (max-width: 520px) {
-            .hide_on_small {
-            display: none;
-            }
-            }
+            body a { color: var(--link-color); }
+            .hide_on_small{ display: block; }
+            @media (max-width: 520px) { .hide_on_small { display: none; } }
             .nav_bar {
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             border: 0px solid transparent;
-            /* border-radius: 10px; */
-            /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); */
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
-            padding-top: 10px;
-            padding-left: 10px;
-            padding-bottom: 10px;
-            z-index: 1000;
-            position: fixed;
-            display: flex;
-            width: 100vw;
-            height: 100px;
+            padding-top: 10px; padding-left: 10px;
+            padding-bottom: 10px; z-index: 1000;
+            position: fixed; display: flex;
+            width: 100vw; height: 100px;
             }
             .nav_bar_btn {
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
             color: var(--codebtntxt-color);
-            top: 80px;
-            left: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            z-index: 1000;
-            position: fixed;
-            display: flex;
-            width: 20%;
-            height: 20px;
-            justify-content: center;
-            align-items: center;
+            top: 80px; left: 0px; padding-top: 10px;
+            padding-bottom: 10px; z-index: 1000;
+            position: fixed; display: flex;
+            width: 20%; height: 20px;
+            justify-content: center; align-items: center;
             }
-            .nav_bar_btn:hover{
-            background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2));
-            }
+            .nav_bar_btn:hover{ background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2)); }
             .nav_bar_btn:active{
             background: linear-gradient(to bottom right, var(--codebtn-color-2), var(--codebtn-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
-            .nav_bar_text{
-            margin-top: 5px;
-            }
-            .nav_bar_text h3 {
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            color: var(--logo-color);
-            }
-            .nav_bar_text h5 {
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            color: var(--slogan-color)
-            }
+            .nav_bar_text{ margin-top: 5px; }
+            .nav_bar_text h3 { margin: 0; padding: 0; line-height: 1.2; color: var(--logo-color); }
+            .nav_bar_text h5 { margin: 0; padding: 0; line-height: 1.2; color: var(--slogan-color) }
             .end_bar {
-            flex: 1;
-            margin-top: 15px;
-            padding: 15px;
+            flex: 1; margin-top: 15px; padding: 15px;
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
-            text-align: left;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); text-align: left;
             }
-            svg {
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            }
+            svg { width: 60px; height: 60px; cursor: pointer; }
             .content {
-            margin-top: 5px;
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-bottom: 5px;
-            padding: 15px;
-            background-color: var(--board-color);
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-top: 5px; margin-left: 10px;
+            margin-right: 10px; margin-bottom: 5px;
+            padding: 15px; background-color: var(--board-color);
+            border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             }
             .button {
-            margin-top: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            padding: 15px;
+            margin-top: 5px; margin-left: 5px;
+            margin-right: 5px; margin-bottom: 5px; padding: 15px;
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             border-radius: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            cursor: pointer;
+            text-align: center; cursor: pointer;
             }
-            .button:hover {
-            background: linear-gradient(to bottom right, var(--hover-color-1), var(--hover-color-2));
-            }
+            .button:hover { background: linear-gradient(to bottom right, var(--hover-color-1), var(--hover-color-2)); }
             .button:active{
             background: linear-gradient(to bottom right, var(--main-color-2), var(--main-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
             .codebox {
-            margin-top: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 4px;
-            padding-bottom: 10px;
+            margin-top: 5px; margin-left: 5px;
+            margin-right: 5px; margin-bottom: 10px;
+            padding-left: 4px; padding-right: 4px;
+            padding-top: 4px; padding-bottom: 10px;
             background: linear-gradient(to bottom right, var(--codebg-color-1), var(--codebg-color-2));
-            border-radius: 10px;
-            font-family: monospace;
-            text-align: left;
-            color: var(--code-color);
-            word-spacing: 0;
+            border-radius: 10px; font-family: monospace; text-align: left;
+            color: var(--code-color); word-spacing: 0;
             }
             .codebox p{
-            margin: 0;
-            padding-left: 10px;
-            padding-right: 10px;
-            line-height: 1.2;
+            margin: 0; padding-left: 10px;
+            padding-right: 10px; line-height: 1.2;
             }
             .codebox_title {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-bottom: 10px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            padding-left: 10px;
-            padding-right: 10px;
+            display: flex; justify-content: space-between;
+            margin-top: 4px; margin-left: 4px;
+            margin-right: 4px; margin-bottom: 10px;
+            padding-top: 4px; padding-bottom: 4px;
+            padding-left: 10px; padding-right: 10px;
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
-            border-radius: 4px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            color: var(--codebtntxt-color);
-            align-items: center;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color); align-items: center;
             }
             .codebox_title_btn {
-            margin-top: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-bottom: 10px;
-            padding: 10px;
+            margin-top: 4px; margin-left: 4px;
+            margin-right: 4px; margin-bottom: 10px; padding: 10px;
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
-            border-radius: 4px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            color: var(--codebtntxt-color);
-            cursor: pointer;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color); cursor: pointer;
             }
-            .codebox_title_btn:hover{
-            background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2));
-            }
+            .codebox_title_btn:hover{ background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2)); }
             .codebox_title_btn:active{
             background: linear-gradient(to bottom right, var(--codebtn-color-2), var(--codebtn-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
-            .scroll-container {
-            width: 100%;  /* Adjust as needed */
-            overflow-x: auto; /* Enables horizontal scroll */
-            white-space: nowrap; /* Prevents text from wrapping */
-            }
+            .scroll-container { width: 100%; overflow-x: auto; white-space: nowrap; }
         </style>
         <div class="nav_bar">
             <div style="display: flex;">
@@ -403,27 +196,19 @@
                 </div>
             </div>
         </div>
-        <div class="nav_bar_btn" style="left: 0%;">Home</div>
+        <div class="nav_bar_btn" style="left: 0%;" onclick="window.location.href='/'">Home</div>
         <div class="nav_bar_btn" style="left: 20%;">Projects</div>
         <div class="nav_bar_btn" style="left: 40%;">Worlds</div>
         <div class="nav_bar_btn" style="left: 60%;">Miscs</div>
-        <div class="nav_bar_btn" style="left: 80%;" id="darkModeToggle" onclick="toggleDark()">Theme</div>        
+        <div class="nav_bar_btn" style="left: 80%;" id="darkModeToggle" onclick="toggleDark()">Theme</div>
         <div class="content">
-            <h2>Error occurred!</h2>
-                <ol>
-                    <li>
-                        <h3>Questions</h3>
-                        <ol>
-                            <li>
-                                <h4>What error did I encounter?</h4>
-                                <p>You encountered a very <strong>dangerous</strong> <span style="color: red;">ERROR_404</span>. Here is the source code:</p>
-                                <div class="codebox">
-                                    <div class="codebox_title">
-                                        <span>ASCII</span>
-                                        <div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div>
-                                    </div>
-                                    <div class="scroll-container">
-                                        <pre class="glitch">
+            <div class="codebox">
+                <div class="codebox_title">
+                    <span id="r_out" class="glitch">ASCII</span>
+                    <div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div>
+                </div>
+                <div class="scroll-container">
+                    <pre class="agoraphobia">
     __/\\\\\\\\\\\\\\\______________________________________________________________________________/\\\________/\\\\\\\_______________/\\\____TM      
      _\/\\\///////////_____________________________________________________________________________/\\\\\______/\\\/////\\\___________/\\\\\____       
       _\/\\\______________________________________________________________________________________/\\\/\\\_____/\\\____\//\\\________/\\\/\\\____      
@@ -434,101 +219,11 @@
            _\/\\\\\\\\\\\\\\\_\/\\\_________\/\\\__________\///\\\\\/___\/\\\_____________________________\/\\\_____\///\\\\\\\/_____________\/\\\____ 
             _\///////////////__\///__________\///_____________\/////_____\///______________________________\///________\///////_______________\///_____
 </pre>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>How old is it?</h4>
-                                <p>Error 404 is <b><span id="result"></span> years old</b>.</p>
-                            </li>
-                            <li>
-                                <h4>When did Error 404 first came out?</h4>
-                                <p>The <b>Error 404</b> "<b>Not Found</b>" message has been around since the early days of the <b>World Wide Web</b>. It originated with the <b>HTTP 0.9 and 1.0 specifications</b>, which were published in <b>1992</b> by <b>Tim Berners-Lee and the IETF (Internet Engineering Task Force)</b>. The first official documentation of HTTP 1.0, including status codes like 404, appeared in <b>RFC 1945</b> (May 1996).</p>
-                                <p>So while the concept of "<b>404 Not Found</b>" existed in <b>1992</b>, it became officially standardized in <b>1996</b>.</p>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <h3>The Tragic Tale of a 404 Page</h3>
-                        <ol>
-                            <li>
-                                <h4>The Request Begins</h4>
-                                <ul>
-                                    <li>A user types a URL into their browser or clicks a link.</li>
-                                    <li>The browser sends an HTTP request to the web server, asking for a specific resource (a webpage, image, or file).</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h4>Server Checks Its Map</h4>
-                                <ul>
-                                    <li>The web server receives the request and checks its file system or database to see if the requested file exists.</li>
-                                    <li>If the file is found, the server happily sends it back with an HTTP 200 OK status.</li>
-                                    <li>If the file is missing, things start to go very wrong...</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h4>The Horror Unfolds</h4>
-                                <ul>
-                                    <li>The server realizes the requested resource does not exist or has been moved without a redirect.</li>
-                                    <li>Since it has no valid response, it generates an HTTP 404 Not Found status.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h4>The 404 Page Awakens</h4>
-                                <ul>
-                                    <li>Instead of an empty response, the server loads the custom 404 page (if one exists).</li>
-                                    <li>
-                                        The browser receives this sad little error page, which tells the user:
-                                        <ul><li>❝Sorry, what you're looking for is gone! Maybe it never existed? Maybe it was deleted? Maybe the link is broken? Who knows!❞</li></ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h4>The User's Fate</h4>
-                                <ul>
-                                    <li>
-                                        The user either:
-                                        <ul>
-                                            <li>Checks their URL for typos.</li>
-                                            <li>Hits the back button in frustration.</li>
-                                            <li>Leaves the website forever.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h4>The Server Logs the Failure</h4>
-                                <ul>
-                                    <li>The server might log the missing request, allowing the admin to see which pages are broken.</li>
-                                    <li>If the website owner is proactive, they might set up a redirect (301/302) so future users won’t hit the same dead end.</li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <h3>Why Does 404 Happen?</h3>
-                        <ul>
-                            <li>The page was deleted but not redirected.</li>
-                            <li>The user typed the wrong URL.</li>
-                            <li>The page was moved without updating links.</li>
-                            <li>The link was broken (bad coding, outdated bookmarks, etc.).</li>
-                            <li>A network issue messed up the request.</li>
-                        </ul>
-                    </li>
-                </ol>
-        </div>
-        <div class="content">
-            <h2>Quick strategy</h2>
-            <p>What you can do now is to return to the main page.</p>
+                </div>
+            </div>
+            <h2>Error 404</h2>
+            <p>Page not found.</p>
             <div class="button" onclick="window.location.href='/'">Redirect to Home page</div>
-        </div>
-        <div class="content">
-            <h1>Today is kinda...</h1>
-            <h2>...kinda...</h2>
-            <h3>...uhh...</h3>
-            <h4>...erm...</h4>
-            <h5>...ah...</h5>
-            <h6>...nevermind.</h6>
         </div>
         <div class="end_bar">
             <p>© 2024-2025 Indextoz Interactive Corporation. All rights reserved.</p>
