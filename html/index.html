@@ -13,189 +13,68 @@
         </audio>
         <script>
             let source="https://raw.githubusercontent.com/sakamoto9016/I2c/main/assets/";
-            document.getElementById("au00").src=source+"audio/push.wav";
-            document.getElementById("au01").src=source+"audio/release.wav";
-            let audioPush = document.getElementById("a_push");
-            let audioRelease = document.getElementById("a_release");
-            audioPush.load();
-            audioRelease.load();
             function copyCode(element) {
                 element.textContent = "Don't expect me to copy for you";
-                setTimeout(() => {
-                    element.textContent = "Useless copy code";
-                }, 2000)
-            }
+                setTimeout(() => { element.textContent = "Useless copy code"; }, 2000) }
             function toggleDark() {
                 const root = document.documentElement;
                 const button = document.getElementById("darkModeToggle");
-
                 if (root.classList.contains('dark-mode')) {
                     root.classList.remove('dark-mode');
-                    localStorage.setItem('theme', 'light'); // Save preference
+                    localStorage.setItem('theme', 'light');
                     button.innerHTML = "Daylight"; 
                 } else {
                     root.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark'); // Save preference
+                    localStorage.setItem('theme', 'dark');
                     button.innerHTML = "Moonlight"; 
                 }
             }
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark-mode');
+            if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark-mode'); }
+            function generateLetters() {
+               let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+               let result = "";
+               for (let i = 0; i < 10; i++) {
+                   result += letters.charAt(Math.floor(Math.random() * letters.length));
+               }
+               document.getElementById("r_out").textContent = result;
             }
+            setInterval(generateLetters, 100);
+            generateLetters();
         </script>
         <style>
             :root {
-            --glowInner: transparent;--glowColor: #fff;
-            --main-color-1: #b5d7f3;
-            --main-color-2: #83a6c2;
-            --codebtnhov-color-1: #7fb9e9;
-            --codebtnhov-color-2: #517c9e;
-            --codebg-color-1: #011322;
-            --codebg-color-2: #193d5a;
-            --code-color: #0ff;
-            --text-color: #000;
-            --slogan-color: #333;
-            --logo-color: #000;
-            --board-color: #ffffff33;
-            --hover-color-1: #a6d0f3;
-            --hover-color-2: #74a1c5;
-            --codebtn-color-1: #6fa6d3;
-            --codebtn-color-2: #3a5d79;
-            --codebtntxt-color: #fff;
-            --link-color: #00f;
+            --glowInner: transparent; --glowColor: #fff; --agoraphobiaColor1:255,255,255;
+            --main-color-1: #b5d7f3; --main-color-2: #83a6c2;
+            --codebtnhov-color-1: #7fb9e9; --codebtnhov-color-2: #517c9e;
+            --codebg-color-1: #011322; --codebg-color-2: #193d5a;
+            --code-color: #0ff; --text-color: #000;
+            --slogan-color: #333; --logo-color: #000; --board-color: #ffffff33;
+            --hover-color-1: #a6d0f3; --hover-color-2: #74a1c5;
+            --codebtn-color-1: #6fa6d3; --codebtn-color-2: #3a5d79;
+            --codebtntxt-color: #fff; --link-color: #00f;
             }
             .dark-mode {
-            --main-color-1: #26567e;
-            --main-color-2: #0c2d47;
-            --codebtnhov-color-1: #67a6da;
-            --codebtnhov-color-2: #3f6c8f;
-            --codebg-color-1: #000000;
-            --codebg-color-2: #0a253b;
-            --code-color: rgb(0, 63, 255);
-            --text-color: #ffffff;
-            --slogan-color: #ddd;
-            --logo-color: #ffffff;
-            --board-color: #00000033;
-            --hover-color-1: #2d699b;
-            --hover-color-2: #124064;
-            --codebtn-color-1: #5b90bb;
-            --codebtn-color-2: #213e55;
-            --codebtntxt-color: #fff;
-            --link-color: #07f;
+            --main-color-1: #26567e; --main-color-2: #0c2d47;
+            --codebtnhov-color-1: #67a6da; --codebtnhov-color-2: #3f6c8f;
+            --codebg-color-1: #000000; --codebg-color-2: #0a253b;
+            --code-color: rgb(0, 63, 255); --text-color: #ffffff;
+            --slogan-color: #ddd; --logo-color: #ffffff; --board-color: #00000033;
+            --hover-color-1: #2d699b; --hover-color-2: #124064;
+            --codebtn-color-1: #5b90bb; --codebtn-color-2: #213e55;
+            --codebtntxt-color: #fff; --link-color: #07f;
             }
-            .glitch {
-            animation: glitch 3s steps(100) infinite;
-            }
+            /* #region Output Styling */
+            .glitch { animation: glitch 3s steps(100) infinite; }
             @keyframes glitch{0%,1%,2%,3%,4%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}5%,6%,7%,8%,9%,10%{text-shadow:-3px 0 0 red,3px 0 0 #0c33f5;filter:blur(0)}11%,12%,13%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}14%,15%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}16%,17%,18%,19%,20%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}21%,22%,23%,24%,25%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}26%,27%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(.5px)}28%,29%,30%{text-shadow:.8px 0 0 #0c33f5,-.8px 0 0 lime;filter:blur(0)}31%,32%,33%,34%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}35%,36%,37%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(.5px)}38%,39%,40%{text-shadow:-3px 0 0 #0c33f5,3px 0 0 lime;filter:blur(0)}41%{text-shadow:45px 0 0 #0c33f5,-45px 0 0 lime;filter:blur(0)}42%{text-shadow:0 0 0 #0c33f5,0 0 0 lime;filter:blur(0)}43%,44%,45%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(0)}46%{text-shadow:1px 0 0 red,-1px 0 0 lime;filter:blur(.5px)}47%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(.5px)}48%,49%,50%{text-shadow:-3px 0 0 red,3px 0 0 lime;filter:blur(0)}51%{text-shadow:3px 0 0 red,-3px 0 0 #0c33f5;filter:blur(0)}}
-            .neon {
-            text-shadow: 0 0 15px var(--glowInner), 0 0 20px var(--glowInner),
-            0 0 30px var(--glowColor), 0 0 40px var(--glowColor),
-            0 0 50px var(--glowColor), 0 0 60px var(--glowColor),
-            0 0 70px var(--glowColor);
-            }
-            .flicker1 {
-            color: inherit;
-            display: inline;
-            animation: flicker1 5s infinite;
-            }
-            .flicker2 {
-            color: inherit;
-            display: inline;
-            animation: flicker2 3s infinite;
-            }
-            .flicker3 {
-            color: inherit;
-            display: inline;
-            animation: flicker1 2s infinite;
-            }
-            @keyframes flicker1 {
-            0% {
-            opacity: 1;
-            }
-            9% {
-            opacity: 1;
-            }
-            10% {
-            opacity: 0;
-            }
-            12% {
-            opacity: 0;
-            }
-            13% {
-            opacity: 1;
-            }
-            18% {
-            opacity: 1;
-            }
-            19% {
-            opacity: 0;
-            }
-            20% {
-            opacity: 0;
-            }
-            22% {
-            opacity: 1;
-            }
-            23% {
-            opacity: 1;
-            }
-            24% {
-            opacity: 0;
-            }
-            25% {
-            opacity: 0;
-            }
-            26% {
-            opacity: 1;
-            }
-            100% {
-            opacity: 1;
-            }
-            }
-            @keyframes flicker2 {
-            0% {
-            opacity: 1;
-            }
-            15% {
-            opacity: 1;
-            }
-            16% {
-            opacity: 0;
-            }
-            18% {
-            opacity: 0;
-            }
-            20% {
-            opacity: 1;
-            }
-            23% {
-            opacity: 1;
-            }
-            24% {
-            opacity: 0;
-            }
-            50% {
-            opacity: 0;
-            }
-            51% {
-            opacity: 1;
-            }
-            75% {
-            opacity: 1;
-            }
-            76% {
-            opacity: 0;
-            }
-            78% {
-            opacity: 0;
-            }
-            79% {
-            opacity: 1;
-            }
-            100% {
-            opacity: 1;
-            }
-            }
+            .neon { text-shadow: 0 0 15px var(--glowInner), 0 0 20px var(--glowInner), 0 0 30px var(--glowColor), 0 0 40px var(--glowColor), 0 0 50px var(--glowColor), 0 0 60px var(--glowColor), 0 0 70px var(--glowColor); }
+            .flicker1 { color: inherit; display: inline; animation: flicker1 5s infinite; }
+            .flicker2 { color: inherit; display: inline; animation: flicker2 3s infinite; }
+            .flicker3 { color: inherit; display: inline; animation: flicker1 2s infinite; }
+            @keyframes flicker1 { 0% { opacity: 1; } 9% { opacity: 1; } 10% { opacity: 0; } 12% { opacity: 0; } 13% { opacity: 1; } 18% { opacity: 1; } 19% { opacity: 0; } 20% { opacity: 0; } 22% { opacity: 1; } 23% { opacity: 1; } 24% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 100% { opacity: 1; } }
+            @keyframes flicker2 { 0% { opacity: 1; } 15% { opacity: 1; } 16% { opacity: 0; } 18% { opacity: 0; } 20% { opacity: 1; } 23% { opacity: 1; } 24% { opacity: 0; } 50% { opacity: 0; } 51% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 78% { opacity: 0; } 79% { opacity: 1; } 100% { opacity: 1; } }
+            .agoraphobia{ color:transparent !important; text-shadow:0 0 5px rgba(0, 0, 0, 0.5); animation:horror 5s infinite; }
+            @keyframes horror{ 0%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.1) } 5%{ text-shadow:-.05em 0.05em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 10%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.3) } 15%{ text-shadow:-0.05em 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 16%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 17%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 20%{ text-shadow:0.05em 0.005em 0.1em rgba(var(--agoraphobiaColor1),0.5) } 25%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.6) } 30%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.7) } 35%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.8) } 36%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 37%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.8) } 40%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.9) } 45%{ text-shadow:0 -.05em 0.005em rgba(var(--agoraphobiaColor1),0.3) } 50%{ text-shadow:0.01em 0.01em 0.005em rgba(var(--agoraphobiaColor1),0.7) } 55%{ text-shadow:-.01em -.01em 0.1em rgba(var(--agoraphobiaColor1),0.6) } 56%{ text-shadow:0.01em -.01em 0.005em rgba(var(--agoraphobiaColor1),1) } 57%{ text-shadow:-.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.6) } 60%{ text-shadow:0.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.5) } 65%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 70%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.3) } 75%{ text-shadow:0.01em -.01em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 76%{ text-shadow:-.01em 0.01em 0.005em rgba(var(--agoraphobiaColor1),1) } 77%{ text-shadow:0.01em 0.01em 0.1em rgba(var(--agoraphobiaColor1),0.2) } 80%{ text-shadow:0 0.01em 0.005em rgba(var(--agoraphobiaColor1),0.1) } 85%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.2) } 86%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),1) } 87%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.2) } 90%{ text-shadow:0 0 0.005em rgba(var(--agoraphobiaColor1),0.3) } 95%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.4) } 100%{ text-shadow:0 0 0.1em rgba(var(--agoraphobiaColor1),0.5) } }
+            /* #endregion */
             body {
             font-family: sans-serif;
             display: flex;
@@ -209,176 +88,98 @@
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             color: var(--text-color);
             }
-            body a {
-            color: var(--link-color);
-            }
-            .hide_on_small{
-            display: block;
-            }
-            @media (max-width: 520px) {
-            .hide_on_small {
-            display: none;
-            }
-            }
+            svg { width: 60px; height: 60px; cursor: pointer; }
+            body a { color: var(--link-color); }
+            .hide_on_small{ display: block; }
+            @media (max-width: 520px) { .hide_on_small { display: none; } }
             .nav_bar {
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             border: 0px solid transparent;
-            /* border-radius: 10px; */
-            /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); */
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
-            padding-top: 10px;
-            padding-left: 10px;
-            padding-bottom: 10px;
-            z-index: 1000;
-            position: fixed;
-            display: flex;
-            width: 100vw;
-            height: 100px;
+            padding-top: 10px; padding-left: 10px;
+            padding-bottom: 10px; z-index: 1000;
+            position: fixed; display: flex;
+            width: 100vw; height: 100px;
             }
             .nav_bar_btn {
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
             color: var(--codebtntxt-color);
-            top: 80px;
-            left: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            z-index: 1000;
-            position: fixed;
-            display: flex;
-            width: 20%;
-            height: 20px;
-            justify-content: center;
-            align-items: center;
+            top: 80px; left: 0px; padding-top: 10px;
+            padding-bottom: 10px; z-index: 1000;
+            position: fixed; display: flex;
+            width: 20%; height: 20px;
+            justify-content: center; align-items: center;
             }
-            .nav_bar_btn:hover{
-            background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2));
-            }
+            .nav_bar_btn:hover{ background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2)); }
             .nav_bar_btn:active{
             background: linear-gradient(to bottom right, var(--codebtn-color-2), var(--codebtn-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
-            .nav_bar_text{
-            margin-top: 5px;
-            }
-            .nav_bar_text h3 {
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            color: var(--logo-color);
-            }
-            .nav_bar_text h5 {
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            color: var(--slogan-color)
-            }
+            .nav_bar_text{ margin-top: 5px; }
+            .nav_bar_text h3 { margin: 0; padding: 0; line-height: 1.2; color: var(--logo-color); }
+            .nav_bar_text h5 { margin: 0; padding: 0; line-height: 1.2; color: var(--slogan-color) }
             .end_bar {
-            flex: 1;
-            margin-top: 15px;
-            padding: 15px;
+            flex: 1; margin-top: 15px; padding: 15px;
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
-            text-align: left;
-            }
-            svg {
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); text-align: left;
             }
             .content {
-            margin-top: 5px;
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-bottom: 5px;
-            padding: 15px;
-            background-color: var(--board-color);
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-top: 5px; margin-left: 10px;
+            margin-right: 10px; margin-bottom: 5px;
+            padding: 15px; background-color: var(--board-color);
+            border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             }
             .button {
-            margin-top: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            padding: 15px;
+            margin-top: 5px; margin-left: 5px;
+            margin-right: 5px; margin-bottom: 5px; padding: 15px;
             background: linear-gradient(to bottom right, var(--main-color-1), var(--main-color-2));
             border-radius: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            cursor: pointer;
+            text-align: center; cursor: pointer;
             }
-            .button:hover {
-            background: linear-gradient(to bottom right, var(--hover-color-1), var(--hover-color-2));
-            }
+            .button:hover { background: linear-gradient(to bottom right, var(--hover-color-1), var(--hover-color-2)); }
             .button:active{
             background: linear-gradient(to bottom right, var(--main-color-2), var(--main-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
             .codebox {
-            margin-top: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 4px;
-            padding-bottom: 10px;
+            margin-top: 5px; margin-left: 5px;
+            margin-right: 5px; margin-bottom: 10px;
+            padding-left: 4px; padding-right: 4px;
+            padding-top: 4px; padding-bottom: 10px;
             background: linear-gradient(to bottom right, var(--codebg-color-1), var(--codebg-color-2));
-            border-radius: 10px;
-            font-family: monospace;
-            text-align: left;
-            color: var(--code-color);
-            word-spacing: 0;
+            border-radius: 10px; font-family: monospace; text-align: left;
+            color: var(--code-color); word-spacing: 0;
             }
             .codebox p{
-            margin: 0;
-            padding-left: 10px;
-            padding-right: 10px;
-            line-height: 1.2;
+            margin: 0; padding-left: 10px;
+            padding-right: 10px; line-height: 1.2;
             }
             .codebox_title {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-bottom: 10px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            padding-left: 10px;
-            padding-right: 10px;
+            display: flex; justify-content: space-between;
+            margin-top: 4px; margin-left: 4px;
+            margin-right: 4px; margin-bottom: 10px;
+            padding-top: 4px; padding-bottom: 4px;
+            padding-left: 10px; padding-right: 10px;
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
-            border-radius: 4px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            color: var(--codebtntxt-color);
-            align-items: center;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color); align-items: center;
             }
             .codebox_title_btn {
-            margin-top: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-bottom: 10px;
-            padding: 10px;
+            margin-top: 4px; margin-left: 4px;
+            margin-right: 4px; margin-bottom: 10px; padding: 10px;
             background: linear-gradient(to bottom right, var(--codebtn-color-1), var(--codebtn-color-2));
-            border-radius: 4px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            color: var(--codebtntxt-color);
-            cursor: pointer;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--codebtntxt-color); cursor: pointer;
             }
-            .codebox_title_btn:hover{
-            background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2));
-            }
+            .codebox_title_btn:hover{ background: linear-gradient(to bottom right, var(--codebtnhov-color-1), var(--codebtnhov-color-2)); }
             .codebox_title_btn:active{
             background: linear-gradient(to bottom right, var(--codebtn-color-2), var(--codebtn-color-1));
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
             }
-            .scroll-container {
-            width: 100%;  /* Adjust as needed */
-            overflow-x: auto; /* Enables horizontal scroll */
-            white-space: nowrap; /* Prevents text from wrapping */
-            }
+            .scroll-container { width: 100%; overflow-x: auto; white-space: nowrap; }
+            .pre_code { margin-left: 10px; margin-right: 10px; }
         </style>
         <div class="nav_bar">
             <div style="display: flex;">
@@ -396,11 +197,11 @@
                 </div>
             </div>
         </div>
-        <div class="nav_bar_btn" style="left: 0%;">Home</div>
-        <div class="nav_bar_btn" style="left: 20%;">Projects</div>
-        <div class="nav_bar_btn" style="left: 40%;">Worlds</div>
-        <div class="nav_bar_btn" style="left: 60%;">Miscs</div>
-        <div class="nav_bar_btn" style="left: 80%;" id="darkModeToggle" onclick="toggleDark()">Theme</div>        
+        <div class="nav_bar_btn" style="left: 0%;" onclick="window.location.href='/'">Home</div>
+        <div class="nav_bar_btn" style="left: 20%;" onclick="window.location.href='/Projects'">Projects</div>
+        <div class="nav_bar_btn" style="left: 40%;" onclick="window.location.href='/Worlds'">Worlds</div>
+        <div class="nav_bar_btn" style="left: 60%;" onclick="window.location.href='/Miscs'">Miscs</div>
+        <div class="nav_bar_btn" style="left: 80%;" id="darkModeToggle" onclick="toggleDark()">Theme</div>
         <div class="content">
             <h2>ASCII</h2>
             <h3>Introduction</h3>
@@ -411,7 +212,7 @@
                     <div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div>
                 </div>
                 <div class="scroll-container">
-                    <pre>
+                    <pre class="pre_code">
     ___           _           _                             
    |_ _|_ __   __| | _____  _| |_ ___ ____                  
     | || '_ \ / _` |/ _ \ \/ / __/ _ \_  /                  
@@ -426,14 +227,114 @@
    | |__| (_) | |  | |_) | (_) | | | (_| | |_| | (_) | | | |
     \____\___/|_|  | .__/ \___/|_|  \__,_|\__|_|\___/|_| |_|
                    |_|                                      
-                    </pre>
+</pre>
                 </div>
             </div>
             <hr>
         </div>
+        <div class="content">
+            <h2>Credits</h2>
+            <h3>Special thanks to...</h3>
+            <ol>
+                <li><a href="https://mistium.com"><b>Mistium</b></a> for continuously keep the <b>domain</b> always online!</li>
+                <li><a href="https://neocities.org"><b>Neocities</b></a> for teaching us how to use HTML!</li>
+            </ol>
+            <div class="codebox">
+                <div class="codebox_title">
+                    <span>Linux machine</span>
+                    <div class="codebox_title_btn" onclick="copyCode(this)">Copy code</div>
+                </div>
+                <div class="scroll-container">
+                    <pre class="pre_code" style="font-size: 0.5em;">
+[    0.000000] Linux version 6.5.10-custom (gcc version 13.2.0) #1 SMP
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.5.10 root=/dev/sda1 ro quiet splash
+[    0.000000] x86/fpu: x87 FPU will use FXSAVE
+[    0.000000] CPU: AMD Ryzen 9 7950X (family: 0x19, model: 0x61, stepping: 2)
+[    0.000000] Memory: 64GB RAM (64GB usable)
+[    0.000000] Kernel direct mapping tables up to 64GB initialized
+[    0.000000] Kernel Randomization: enabled
+[    0.001000] BIOS provided physical RAM map:
+[    0.001000]  BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+[    0.001000]  BIOS-e820: [mem 0x0000000000100000-0x00000000bfffffff] usable
+[    0.002000] ACPI: Early table checksum verification complete
+[    0.002000] ACPI: RSDP 0x00000000BFBFE014 000024 (v02 ALASKA)
+[    0.003000] ACPI: MADT 0x00000000BFBFE120 000104 (v01 ALASKA  A M I  00000001)
+[    0.004000] ACPI: APIC enabled
+[    0.004000] SRAT: Node 0 PXM 0 -> [mem 0x0000000000000000-0x00000000bfffffff]
+[    0.005000] Kernel: Using 4-level paging
+[    0.005000] CPU0: Thermal monitoring enabled
+[    0.006000] smpboot: Booting Node 0 Processor 0 APIC 0x0
+[    0.007000] smpboot: CPU0: AMD Ryzen 9 7950X (family: 0x19, model: 0x61, stepping: 2)
+[    0.008000] Performance Events: AMD PMU driver initialized
+[    0.009000] Booting CPU 1
+[    0.010000] Booting CPU 2
+[    0.011000] Booting CPU 3
+[    0.012000] Booting CPU 4
+[    0.013000] Booting CPU 5
+[    0.014000] Booting CPU 6
+[    0.015000] Booting CPU 7
+[    0.016000] Booting CPU 8
+[    0.017000] Booting CPU 9
+[    0.018000] Booting CPU 10
+[    0.019000] Booting CPU 11
+[    0.020000] Booting CPU 12
+[    0.021000] Booting CPU 13
+[    0.022000] Booting CPU 14
+[    0.023000] Booting CPU 15
+[    0.024000] smp: Brought up 16 CPUs
+[    0.025000] DMI: ASUS ROG STRIX X670E-E GAMING WIFI, BIOS 2103 10/05/2024
+[    0.026000] PCI: Using configuration type 1 for PCI bus
+[    0.027000] PCI: MMCONFIG at [mem 0xeff00000-0xffffffff] reserved in E820
+[    0.028000] pnp: PnP ACPI init
+[    0.029000] ACPI: bus type PNP registered
+[    0.030000] PNP: ACPI init complete
+[    0.031000] Initializing random number generator
+[    0.032000] random: crng done (32 bit) [Mersenne Twister]
+[    0.033000] tty: serial driver loaded
+[    0.034000] usbcore: registered new interface driver usbfs
+[    0.035000] usbcore: registered new interface driver hub
+[    0.036000] usbcore: registered new device driver usb
+[    0.037000] xhci_hcd 0000:02:00.0: xHCI Host Controller
+[    0.038000] xhci_hcd 0000:02:00.0: new USB bus registered, assigned bus number 1
+[    0.039000] hub 1-0:1.0: USB hub found
+[    0.040000] hub 1-0:1.0: 4 ports detected
+[    0.041000] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[    0.042000] ata1.00: ATA-9: Samsung SSD 990 PRO 2TB, EXM02B6Q, max UDMA/133
+[    0.043000] ata1.00: configured for UDMA/133
+[    0.044000] scsi 0:0:0:0: Direct-Access     ATA      Samsung SSD 990  EXM0 PQ: 0 ANSI: 7
+[    0.045000] sd 0:0:0:0: [sda] 3907029168 512-byte logical blocks: (2.00 TB/1.81 TiB)
+[    0.046000] sd 0:0:0:0: [sda] Write Protect is off
+[    0.047000] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+[    0.048000] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, supports DPO and FUA
+[    0.049000]  sda: sda1 sda2
+[    0.050000] usb 1-1: new high-speed USB device number 2 using xhci_hcd
+[    0.051000] hub 1-1:1.0: USB hub found
+[    0.052000] hub 1-1:1.0: 4 ports detected
+[    0.053000] VFS: Mounted root (ext4 filesystem) readonly on device 8:1.
+[    0.054000] devtmpfs: mounted
+[    0.055000] Freeing unused kernel image memory
+[    0.056000] systemd[1]: Starting system services...
+[    0.057000] systemd[1]: Mounted /proc filesystem.
+[    0.058000] systemd[1]: Started udev Kernel Device Manager.
+[    0.059000] systemd[1]: Reached target Local File Systems.
+[    0.060000] systemd[1]: Started Daily Cleanup of Temporary Directories.
+[    0.061000] systemd[1]: Reached target Multi-User System.
+[    0.062000] systemd[1]: Starting Graphical Interface...
+[    0.063000] systemd[1]: Started GNOME Display Manager.
+[    0.064000] systemd[1]: Starting User Manager for UID 1000...
+[    0.065000] systemd[1]: Started User Manager for UID 1000.
+[    0.066000] systemd[1]: Startup complete.
 
+Welcome to Linux 6.5.10-custom (tty1)
+
+myuser@linux:~$
+
+</pre>
+                </div>
+            </div>
+        </div>
         <div class="end_bar">
-            <p>© 2025 Indextoz Interactive Corporation. All rights reserved.</p>
+            <p>Copyright ©2024-2025 Indextoz Interactive Corporation. All rights reserved.</p>
             <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
                 <h2 style="margin: 0;" class="glitch">Indextoz's Projects</h2>
                 <p style="margin: 0; font-size: 14px;">
